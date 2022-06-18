@@ -1,5 +1,6 @@
-const express = require("express"),
-      mongoose = require("mongoose");
+var portNumber = process.env.port || 3000;
+var express = require("express"),
+      
       app = express();  
 //Routes
 
@@ -11,7 +12,7 @@ app.use(express.static("public"));
 // Routes using
 app.use(indexRoutes);
 
-const server = app.listen(3000,(err)=>{
+const server = app.listen(portNumber,(err)=>{
     if(err){
         console.log(err);
     }
