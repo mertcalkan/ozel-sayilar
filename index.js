@@ -1,4 +1,3 @@
-var portNumber = process.env.PORT || 3000;
 var express = require("express"),
       
       app = express();  
@@ -12,7 +11,7 @@ app.use(express.static("public"));
 // Routes using
 app.use(indexRoutes);
 
-const server = app.listen(portNumber,(err)=>{
+const server = app.listen(process.env.PORT || 5000,(err)=>{
     if(err){
         console.log(err);
     }
