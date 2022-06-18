@@ -11,7 +11,7 @@ app.use(express.static("public"));
 // Routes using
 app.use(indexRoutes);
 
-const server = app.listen(process.env.PORT || 5000,(err)=>{
+const server = app.listen(process.env.PORT ,(err)=>{
     if(err){
         console.log(err);
     }

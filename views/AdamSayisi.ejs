@@ -14,14 +14,16 @@
     <div class="back-main-page">
       <p>Ana Sayfaya Dön</p>
     </div>
-    </a>
+  </a>
   <div class="wrapper">
     <header>
       <h1>Adam Sayısı Kontrolü</h1>
       <p>Eğer bir sayının karesinin tersi , o sayının tersinin karesine eşitse o sayı Adam sayısıdır. </p>
     </header>
     <div class="inputs">
-      <input type="text" min="0" maxlength="10" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+      <input type="number" min="0"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="10" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
         onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
       <button>Kontrol Et</button>
     </div>
@@ -47,13 +49,13 @@
       infoTxt.style.display = "block";
 
 
-      if (isAdam(intFilterInput)){
-          
-          return infoTxt.innerHTML =
-            `Evet, <span>'${txtInput.value}'</span> sayısı Adam sayısıdır.`;
-        } else {
-          infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Adam sayısı değildir.`
-        }
+      if (isAdam(intFilterInput)) {
+
+        return infoTxt.innerHTML =
+          `Evet, <span> ${txtInput.value} </span> sayısı Adam sayısıdır.`;
+      } else {
+        infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı Adam sayısı değildir.`
+      }
     });
     txtInput.addEventListener("keypress", function (event) {
       // If the user presses the "Enter" key on the keyboard
@@ -61,27 +63,26 @@
         // Cancel the default action, if needed
         infoTxt.style.display = "block";
 
-      if(filterInput){
+        if (filterInput) {
 
-      
-        if (isAdam(intFilterInput)){
-          
-          return infoTxt.innerHTML =
-            `Evet, <span>'${txtInput.value}'</span> sayısı Adam sayısıdır.`;
-        } else {
-          infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Adam sayısı değildir.`
+
+          if (isAdam(intFilterInput)) {
+
+            return infoTxt.innerHTML =
+              `Evet, <span> ${txtInput.value} </span> sayısı Adam sayısıdır.`;
+          } else {
+            infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı Adam sayısı değildir.`
+          }
+        } else if (filterInput == "") {
+          infoTxt.innerHTML = "";
         }
-      }
-      else if(filterInput == ""){
-        infoTxt.innerHTML = "";
-      }
       }
     });
     txtInput.addEventListener("keyup", () => {
       filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
       intFilterInput = Number(filterInput);
       reverseInput = filterInput.split("").reverse().join("");
-    //   intReverseInput = Number(reverseInput);
+      //   intReverseInput = Number(reverseInput);
 
 
       if (filterInput) {
@@ -91,21 +92,21 @@
       checkBtn.classList.remove("active");
     });
 
-    
+
 
     function isAdam(intFilterInput) {
-      
-        if (reverse(intFilterInput**2) === (reverse(intFilterInput))**2){
-        return true;    
-        }
-        
-      
+
+      if (reverse(intFilterInput ** 2) === (reverse(intFilterInput)) ** 2) {
+        return true;
+      }
+
+
     }
     // console.log(typeof(Number(reverseInput)))
-    function reverse(intFilterInput){
-        intReversedInput = Number(intFilterInput.toString().split("").reverse().join(""));
-        return intReversedInput
-        
+    function reverse(intFilterInput) {
+      intReversedInput = Number(intFilterInput.toString().split("").reverse().join(""));
+      return intReversedInput
+
     }
     console.log(reverse(164))
   </script>

@@ -11,18 +11,20 @@
 
 <body>
   <a href="/">
-  <div class="back-main-page">
-    <p>Ana Sayfaya Dön</p>
-  </div>
+    <div class="back-main-page">
+      <p>Ana Sayfaya Dön</p>
+    </div>
   </a>
-  
+
   <div class="wrapper">
     <header>
       <h1>Asal Sayı Kontrolü</h1>
       <p>Asal sayılar yalnızca kendisine ve 1'e bölünebilen doğal sayılardır.</p>
     </header>
     <div class="inputs">
-      <input type="number" min="0" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+      
+      <input type="number" id="NumberInput" min="0" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+        
         onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
       <button>Kontrol Et</button>
     </div>
@@ -40,9 +42,9 @@
       console.log(filterInput);
       // if (filterInput != reverseInput)
       if (!isPrime(filterInput)) {
-        return infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı asal sayı değildir.`;
+        return infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı asal sayı değildir.`;
       }
-      infoTxt.innerHTML = `Evet, <span>'${txtInput.value}'</span> sayısı asal bir sayıdır.`;
+      infoTxt.innerHTML = `Evet, <span> ${txtInput.value} </span> sayısı asal bir sayıdır.`;
     });
     txtInput.addEventListener("keypress", function (event) {
       // If the user presses the "Enter" key on the keyboard
@@ -52,14 +54,13 @@
 
         if (filterInput) {
           if (!isPrime(filterInput)) {
-            return infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı asal sayı değildir.`;
+            return infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı asal sayı değildir.`;
           }
-          infoTxt.innerHTML = `Evet, <span>'${txtInput.value}'</span> sayısı asal bir sayıdır.`;
+          infoTxt.innerHTML = `Evet, <span> ${txtInput.value} </span> sayısı asal bir sayıdır.`;
+        } else if (filterInput == "") {
+          infoTxt.innerHTML = ""
         }
-        else if (filterInput == "") {
-        infoTxt.innerHTML = ""
       }
-      } 
     });
     txtInput.addEventListener("keyup", () => {
       filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
@@ -75,7 +76,31 @@
         if (filterInput % i === 0) return false;
       return filterInput > 1;
     }
+
+
+    //  $(document).ready(function () {
+    //   $("#NumberInput").keypress(function () {
+    //     if(this.value.length == 10){
+    //       return false;
+    //     }
+
+
+
+    //   })
+
+
+
+    //         })
   </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script>
+
+
+  </script>
+
+
+
 </body>
 
 </html>

@@ -12,9 +12,9 @@
 <body>
     <a href="/">
         <div class="back-main-page">
-          <p>Ana Sayfaya Dön</p>
+            <p>Ana Sayfaya Dön</p>
         </div>
-        </a>
+    </a>
     <div class="wrapper">
         <header>
             <h1>Mükemmel Sayı Kontrolü</h1>
@@ -22,7 +22,9 @@
             <p style="font-size: 14.5px; font-weight:400">(7 ve 8 basamaklı sayılarda biraz bekleyiniz.)</p>
         </header>
         <div class="inputs">
-            <input type="text" min="0" maxlength="8" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+            <input type="number" min="0"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="8" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
                 onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
             <button>Kontrol Et</button>
         </div>
@@ -68,13 +70,13 @@
 
                 return infoTxt.innerHTML =
                     // `Evet, <span>'${txtInput.value}'</span> sayısı mükemmel sayıdır.`;
-                    `Evet, <span>'${txtInput.value}'</span> sayısı mükemmel sayıdır.`;
+                    `Evet, <span> ${txtInput.value} </span> sayısı mükemmel sayıdır.`;
 
 
 
 
             } else {
-                infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı mükemmel sayı değildir.`
+                infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı mükemmel sayı değildir.`
 
 
             }
@@ -95,9 +97,9 @@
                 sumDivisors(intFilterInput);
                 if (filterInput) {
 
-                    
+
                     // if (sumDivisors(intFilterInput)) 
-                    if ((sumDivisors(intFilterInput) === intFilterInput) && sum !== 0 ) {
+                    if ((sumDivisors(intFilterInput) === intFilterInput) && sum !== 0) {
 
 
                         return infoTxt.innerHTML =
@@ -113,10 +115,9 @@
 
 
                     }
-                
-                
-                } 
-                else if (filterInput == "") {
+
+
+                } else if (filterInput == "") {
                     infoTxt.innerHTML = "";
                 }
             }
@@ -151,7 +152,7 @@
                 }
             }
             return sum;
-            
+
             // if(intFilterInput == sum / 2){
             //     return true
             // }
@@ -165,7 +166,6 @@
         }
 
         sumDivisors(28);
-        
     </script>
 </body>
 

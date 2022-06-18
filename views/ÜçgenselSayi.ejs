@@ -11,17 +11,19 @@
 
 <body>
     <a href="/">
-  <div class="back-main-page">
-    <p>Ana Sayfaya Dön</p>
-  </div>
-  </a>
+        <div class="back-main-page">
+            <p>Ana Sayfaya Dön</p>
+        </div>
+    </a>
     <div class="wrapper">
         <header>
-            <h1>Üçgensel Sayısı Kontrolü</h1>
+            <h1>Üçgensel Sayı Kontrolü</h1>
             <p>Bir üçgensel sayı, 1'den n'e kadar olan n doğal sayının toplamıdır.</p>
         </header>
         <div class="inputs">
-            <input type="number" min="0" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+            <input type="number" min="0"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="16" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
                 onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
             <button>Kontrol Et</button>
         </div>
@@ -56,12 +58,12 @@
 
 
                 return infoTxt.innerHTML =
-                    `Evet, <span>'${txtInput.value}'</span> sayısı Üçgensel sayıdır.`;
+                    `Evet, <span> ${txtInput.value} </span> sayısı Üçgensel sayıdır.`;
 
 
 
             } else {
-                infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Üçgensel sayı değildir.`
+                infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı Üçgensel sayı değildir.`
 
 
             }
@@ -77,24 +79,24 @@
                 // Cancel the default action, if needed
                 infoTxt.style.display = "block";
 
-            if(filterInput){
-                if (isTriangular(intFilterInput)) {
+                if (filterInput) {
+                    if (isTriangular(intFilterInput)) {
 
 
-                    return infoTxt.innerHTML =
-                        `Evet, <span>'${txtInput.value}'</span> sayısı Üçgensel sayıdır.`;
+                        return infoTxt.innerHTML =
+                            `Evet, <span> ${txtInput.value} </span> sayısı Üçgensel sayıdır.`;
 
 
 
-                } else {
-                    infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Üçgensel sayı değildir.`
+                    } else {
+                        infoTxt.innerHTML =
+                            `Hayır, <span> ${txtInput.value} </span> sayısı Üçgensel sayı değildir.`
 
 
+                    }
+                } else if (filterInput == "") {
+                    infoTxt.innerHTML = "";
                 }
-            }
-            else if(filterInput == ""){
-                infoTxt.innerHTML = "";
-            }
             }
         });
 

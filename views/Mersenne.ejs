@@ -51,12 +51,12 @@
         console.log(Math.log(filterInput) / Math.log(2));
         console.log(filterInput)
         return infoTxt.innerHTML =
-          `Evet, <span>'${txtInput.value}'</span> sayısı Mersenne sayısıdır. Aynı zamanda bir Mersenne asal sayısıdır.`;
+          `Evet, <span> ${txtInput.value} </span> sayısı Mersenne sayısıdır. Aynı zamanda bir Mersenne asal sayısıdır.`;
       } else if (isMercenne(intFilterInput) && !isPrime(intFilterInput)) {
         infoTxt.innerHTML =
-          `Evet, <span>'${txtInput.value}'</span> sayısı Mersenne sayısıdır.Fakat bir Mersenne asal sayısı değildir.`
+          `Evet, <span> ${txtInput.value} </span> sayısı Mersenne sayısıdır.Fakat bir Mersenne asal sayısı değildir.`
       } else {
-        infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Mersenne sayısı değildir.`
+        infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı Mersenne sayısı değildir.`
       }
     });
     txtInput.addEventListener("keypress", function (event) {
@@ -69,12 +69,12 @@
         if (isMercenne(intFilterInput) && isPrime(intFilterInput)) {
           
           return infoTxt.innerHTML =
-            `Evet, <span>'${txtInput.value}'</span> sayısı Mersenne sayısıdır. Aynı zamanda bir Mersenne asal sayısıdır.`;
+            `Evet, <span> ${txtInput.value} </span> sayısı Mersenne sayısıdır. Aynı zamanda bir Mersenne asal sayısıdır.`;
         } else if (isMercenne(intFilterInput) && !isPrime(intFilterInput)) {
           infoTxt.innerHTML =
-            `Evet, <span>'${txtInput.value}'</span> sayısı Mersenne sayısıdır.Fakat bir Mersenne asal sayısı değildir.`
+            `Evet, <span> ${txtInput.value} </span> sayısı Mersenne sayısıdır.Fakat bir Mersenne asal sayısı değildir.`
         } else {
-          infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Mersenne sayısı değildir.`
+          infoTxt.innerHTML = `Hayır, <span> ${txtInput.value} </span> sayısı Mersenne sayısı değildir.`
         }
       }
       else if(filterInput == ""){
