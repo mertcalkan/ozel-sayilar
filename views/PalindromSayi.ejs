@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Palindrom Sayı Kontrolü | Özel Sayılar Dünyası</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <a href="/">
+  <div class="back-main-page">
+    <p>Ana Sayfaya Dön</p>
+  </div>
+  </a>
+  <div class="wrapper">
+    <header>
+      <h1>Palindrom Sayı Kontrolü</h1>
+      <p>Palindrom sayılar tersten okunduğunda da aynı olan sayılara denir.</p>
+    </header>
+    <div class="inputs">
+      <input type="number" min="0" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+        onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+      <button>Kontrol Et</button>
+    </div>
+    <p class="info-txt"></p>
+  </div>
+  <script>
+    const txtInput = document.querySelector(".inputs input"),
+      checkBtn = document.querySelector(".inputs button"),
+      infoTxt = document.querySelector(".info-txt");
+
+
+
+    var filterInput;
+    var reverseInput;
+
+    checkBtn.addEventListener("click", () => {
+
+      //   vr secondPart = String(filterInput*filterInput).slice(-filterInput.length);
+      //   var secondPartInt = Number(secondPart);
+      //   var firstPart = String(filterInput*filterInput).slice(0,-filterInput.length);
+      //   var firstPartInt = Number(firstPart);  a
+      infoTxt.style.display = "block";
+
+
+      if (filterInput == reverseInput) {
+        return infoTxt.innerHTML = `Evet, <span>'${txtInput.value}'</span> sayısı palindrom bir sayıdır.`;
+      } else {
+        infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı palindrom bir sayı değildir.`
+      }
+
+    });
+    txtInput.addEventListener("keypress", function (event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        infoTxt.style.display = "block";
+
+        if (filterInput) {
+          if (filterInput == reverseInput) {
+            return infoTxt.innerHTML = `Evet, <span>'${txtInput.value}'</span> sayısı palindrom bir sayıdır.`;
+          } else {
+            infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı palindrom bir sayı değildir.`
+          }
+        } else if (filterInput == "") {
+          infoTxt.innerHTML = "";
+        }
+      }
+    });
+    txtInput.addEventListener("keyup", () => {
+      filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
+      reverseInput = filterInput.split("").reverse().join("");
+
+
+      if (filterInput) {
+        return checkBtn.classList.add("active");
+      }
+      infoTxt.style.display = "none";
+      checkBtn.classList.remove("active");
+    });
+  </script>
+</body>
+
+</html>

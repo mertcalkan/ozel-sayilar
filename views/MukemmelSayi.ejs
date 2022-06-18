@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mükemmel Sayı Kontrolü | Özel Sayılar Dünyası</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <a href="/">
+        <div class="back-main-page">
+          <p>Ana Sayfaya Dön</p>
+        </div>
+        </a>
+    <div class="wrapper">
+        <header>
+            <h1>Mükemmel Sayı Kontrolü</h1>
+            <p>Pozitif bölenleri toplamı kendisinin iki katına eşit olan sayılara mükemmel sayı denir. </p>
+            <p style="font-size: 14.5px; font-weight:400">(7 ve 8 basamaklı sayılarda biraz bekleyiniz.)</p>
+        </header>
+        <div class="inputs">
+            <input type="text" min="0" maxlength="8" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+            <button>Kontrol Et</button>
+        </div>
+        <p class="info-txt"></p>
+    </div>
+    <script>
+        const txtInput = document.querySelector(".inputs input"),
+            checkBtn = document.querySelector(".inputs button"),
+            infoTxt = document.querySelector(".info-txt");
+
+
+
+        var filterInput;
+        var intFilterInput;
+        var sum;
+
+
+
+
+
+        checkBtn.addEventListener("click", () => {
+
+            //   vr secondPart = String(filterInput*filterInput).slice(-filterInput.length);
+            //   var secondPartInt = Number(secondPart);
+            //   var firstPart = String(filterInput*filterInput).slice(0,-filterInput.length);
+            //   var firstPartInt = Number(firstPart);  a
+            // for (let i = 0; i < filterInput.length; i++){
+            //     sum+= Number(filterInput[i])**filterInput.length;
+
+
+
+
+
+
+
+            // Number(filterInput[i])**filterInput.length
+            infoTxt.style.display = "block";
+
+
+            // if (sumDivisors(intFilterInput))
+            if (sumDivisors(intFilterInput) === intFilterInput && sum !== 0) {
+
+
+                return infoTxt.innerHTML =
+                    // `Evet, <span>'${txtInput.value}'</span> sayısı mükemmel sayıdır.`;
+                    `Evet, <span>'${txtInput.value}'</span> sayısı mükemmel sayıdır.`;
+
+
+
+
+            } else {
+                infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı mükemmel sayı değildir.`
+
+
+            }
+
+
+
+
+
+        });
+        txtInput.addEventListener("keypress", function (event) {
+
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+
+                // Cancel the default action, if needed
+                infoTxt.style.display = "block";
+
+                sumDivisors(intFilterInput);
+                if (filterInput) {
+
+                    
+                    // if (sumDivisors(intFilterInput)) 
+                    if ((sumDivisors(intFilterInput) === intFilterInput) && sum !== 0 ) {
+
+
+                        return infoTxt.innerHTML =
+                            // `Evet, <span>'${txtInput.value}'</span> sayısı mükemmel sayıdır.`;
+                            `Evet, <span>'${txtInput.value}'</span> sayısı mükemmel sayıdır.`;
+
+
+
+
+                    } else {
+                        infoTxt.innerHTML =
+                            `Hayır, <span>'${txtInput.value}'</span> sayısı mükemmel sayısı değildir.`
+
+
+                    }
+                
+                
+                } 
+                else if (filterInput == "") {
+                    infoTxt.innerHTML = "";
+                }
+            }
+        });
+
+
+
+
+        txtInput.addEventListener("keyup", () => {
+            filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
+
+            intFilterInput = Number(filterInput);
+
+
+            reverseInput = filterInput.split("").reverse().join("");
+
+
+            if (filterInput) {
+                return checkBtn.classList.add("active");
+            }
+            infoTxt.style.display = "none";
+            checkBtn.classList.remove("active");
+        });
+
+
+
+        function sumDivisors(intFilterInput) {
+            sum = 0;
+            for (var i = 1; i <= intFilterInput / 2; i++) {
+                if ((intFilterInput % i === 0)) {
+                    sum += i;
+                }
+            }
+            return sum;
+            
+            // if(intFilterInput == sum / 2){
+            //     return true
+            // }
+            // if (sum === intFilterInput && sum !== 0) {
+            //     return true;
+            // }
+            //  else
+            //     {
+            //    console.log("It is not a perfect number.");
+            //     }   
+        }
+
+        sumDivisors(28);
+        
+    </script>
+</body>
+
+</html>

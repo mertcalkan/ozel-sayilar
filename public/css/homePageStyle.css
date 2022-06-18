@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding : 0;
+  box-sizing : border-box;
+  font-family: "Poppins",sans-serif;
+ 
+
+}
+footer{
+  color:white;
+  text-align:center;
+  font-weight:300;
+  font-size:20px;
+  position:relative;
+  bottom:60px;
+}
+body{
+  /* background: #AA57CC;   */
+  background: linear-gradient(160deg, #0093E9 40%, #80D0C7 100%);
+}
+.card-content{
+  position:relative;
+  top:-40px;
+}
+.intro-text p{
+  position: relative;
+  bottom:-60px;
+  color:white;
+  text-align:center;
+  max-width:600px;
+  width:600px;
+  display: flex;
+  align-items: center;
+  margin:0 auto;
+}
+.intro-text{
+  text-align: center;
+  align-items: center;
+}
+.container{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+h2{
+  font-weight:500;
+}
+.card-content{
+display:flex;
+justify-content:center;
+/* align-items:center; */
+flex-wrap: wrap;
+margin:30px;
+}
+.card{
+  position:relative;
+  background:#fff;
+  max-width: 325px;
+  width: 325px;
+  height:auto;
+  margin:25px;
+  box-shadow: 0 5px 25px rgba(1, 1, 1, 0.259);
+   /* box-shadow: 0 15px 40px rgba(0,0,0,0.12); */
+   padding: 20px 25px 15px;
+  border-radius: 10px;
+  overflow : hidden;
+
+}
+.card-info{
+position:relative;
+color:#222;
+padding : 5px 7.5px 7.5px; 
+}
+button{
+  /* align-items:inherit; */
+  white-space: nowrap;
+  overflow-x:auto;
+  /* position:sticky;
+  margin-bottom:100px; */
+  width:80%;
+  height: 40px;
+  border: none;
+  opacity: 1;
+  outline: none;
+  /* color: #fff;
+  background:#AA57CC ; */
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: 20px;
+  border-radius: 5px;
+  /* border: 2px solid #AA57CC; */
+border : 2px solid #0093E9;
+  background: #fff;
+  /* color:#AA57CC; */
+  color: #0093E9;
+  
+}
+button:hover{
+  /* color:#AA57CC;
+  background: #fff; */
+  color: #fff;
+  /* background:#AA57CC ; */
+  /* background: #0093E9; */
+  background:linear-gradient(160deg, #0093E9 40%, #80D0C7 100%);
+/* border: 2px solid #AA57CC; */
+transition: 0.5s;
+}
+.pagination{
+  text-align:center;
+  margin:30px 30px 60px;
+  user-select:none;
+  
+}
+.pagination li{
+  display:inline-block;
+  margin:5px;
+  box-shadow:0 5px 25px rgb(1 1 1/10%);
+  border:2px solid white;
+  border-radius:50%
+}
+.previous-page,.next-page{
+background: white;
+width:50px;
+}
+.current-page{
+/* background: #ccc; */
+/* background:#AA57CC; */
+/* background: #0093E9; */
+background:linear-gradient(160deg, #0093E9 20%, #80D0C7 115%);
+width:50px;
+
+
+}
+.pagination li a{
+  /* color:#fff; */
+  color:white;
+  text-decoration:none;
+  font-size:1.3em;
+  line-height :45px;
+
+}
+/* .current-page:hover{
+  border:2px solid #fff;
+  background:#AA57CC;
+  
+  transition:0.4s;
+
+
+}
+.current-page:hover  a{ color: white; 
+transition: 0.4s;} */
+/* .current-page{
+  color:white;
+  transition:0.4s;
+} */
+.current-page.active{
+background:white;
+/* border :2px solid #AA57CC;
+border: 2px solid #0093E9; */
+ 
+
+}
+.current-page.active a{
+ /* color:#AA57CC; */
+ color: #0093E9;
+}
+.current-page{
+  cursor: pointer;
+}
+/* .page-item.current-page.active{
+border-radius: 50%; 
+width:50px;
+} */
+
+@media (max-width: 520px) {
+
+  body{
+    background: linear-gradient(180deg, #0093E9 30%, #80D0C7 115%);
+  }
+  .current-page{
+    position: relative;
+    bottom:30px;
+    background: linear-gradient(160deg, #0093E9 10%, #80D0C7 70%);
+
+  }
+  .card-content{
+    position:relative;
+    top:10px;
+  }
+}
+@media only screen and (min-width:321px) and (max-width:768px){
+  body{
+    background: linear-gradient(180deg, #0093E9 30%, #80D0C7 115%);
+  }
+  .current-page{
+    position: relative;
+    bottom:30px;
+    background: linear-gradient(160deg, #0093E9 15%, #80D0C7 100%);
+
+  }
+  .card-content{
+    position:relative;
+    top:10px;
+  }
+ 
+  
+
+
+}
+@media (min-width:521px) and (max-width:1200px){
+  .current-page{
+    position: relative;
+    bottom:30px;
+    background: linear-gradient(160deg, #0093E9 15%, #80D0C7 100%);
+
+  }
+  .card-content{
+    position:relative;
+    top:10px;
+  }
+
+
+}
+

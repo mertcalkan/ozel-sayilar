@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Asal Sayı Kontrolü | Özel Sayılar Dünyası</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <a href="/">
+  <div class="back-main-page">
+    <p>Ana Sayfaya Dön</p>
+  </div>
+  </a>
+  
+  <div class="wrapper">
+    <header>
+      <h1>Asal Sayı Kontrolü</h1>
+      <p>Asal sayılar yalnızca kendisine ve 1'e bölünebilen doğal sayılardır.</p>
+    </header>
+    <div class="inputs">
+      <input type="number" min="0" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+        onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+      <button>Kontrol Et</button>
+    </div>
+    <p class="info-txt"></p>
+  </div>
+  <script>
+    const txtInput = document.querySelector(".inputs input"),
+      checkBtn = document.querySelector(".inputs button"),
+      infoTxt = document.querySelector(".info-txt");
+    let filterInput;
+    checkBtn.addEventListener("click", () => {
+      let reverseInput = filterInput.split("").reverse().join("");
+      infoTxt.style.display = "block";
+
+      console.log(filterInput);
+      // if (filterInput != reverseInput)
+      if (!isPrime(filterInput)) {
+        return infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı asal sayı değildir.`;
+      }
+      infoTxt.innerHTML = `Evet, <span>'${txtInput.value}'</span> sayısı asal bir sayıdır.`;
+    });
+    txtInput.addEventListener("keypress", function (event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        infoTxt.style.display = "block";
+
+        if (filterInput) {
+          if (!isPrime(filterInput)) {
+            return infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı asal sayı değildir.`;
+          }
+          infoTxt.innerHTML = `Evet, <span>'${txtInput.value}'</span> sayısı asal bir sayıdır.`;
+        }
+        else if (filterInput == "") {
+        infoTxt.innerHTML = ""
+      }
+      } 
+    });
+    txtInput.addEventListener("keyup", () => {
+      filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
+      if (filterInput) {
+        return checkBtn.classList.add("active");
+      }
+      infoTxt.style.display = "none";
+      checkBtn.classList.remove("active");
+    });
+
+    function isPrime(filterInput) {
+      for (var i = 2; i < filterInput; i++)
+        if (filterInput % i === 0) return false;
+      return filterInput > 1;
+    }
+  </script>
+</body>
+
+</html>

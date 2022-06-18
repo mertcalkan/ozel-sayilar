@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Smith Sayısı Kontrolü | Özel Sayılar Dünyası</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <a href="/">
+        <div class="back-main-page">
+          <p>Ana Sayfaya Dön</p>
+        </div>
+        </a>
+    <div class="wrapper">
+        <header>
+            <h1>Smith Sayısı Kontrolü</h1>
+            <p>1 den büyük asal olmayan bir tamsayının rakamlarının toplamı, sayı asal çarpanlarına ayrılarak
+                yazıldığında bu yazılışta bulunan tüm asal sayıların rakamlarının toplamına eşit oluyorsa bu tür
+                sayılara Smith sayısı denir.</p>
+                <p style="font-size: 14.5px; font-weight:400">(Yüksek basamaklı sayılarda biraz bekleyiniz.)</p>
+        </header>
+        <div class="inputs">
+            <input type="text" min="0" maxlength="6" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+            <button>Kontrol Et</button>
+        </div>
+        <p class="info-txt"></p>
+    </div>
+    <script>
+        const txtInput = document.querySelector(".inputs input"),
+            checkBtn = document.querySelector(".inputs button"),
+            infoTxt = document.querySelector(".info-txt");
+
+
+
+        var filterInput;
+        var intFilterInput;
+        var primeTwoDigitSum;
+        var sumOfPrimes;
+        // var num;
+
+
+
+
+
+        checkBtn.addEventListener("click", () => {
+
+            //   vr secondPart = String(filterInput*filterInput).slice(-filterInput.length);
+            //   var secondPartInt = Number(secondPart);
+            //   var firstPart = String(filterInput*filterInput).slice(0,-filterInput.length);
+            //   var firstPartInt = Number(firstPart);  a
+            // for (let i = 0; i < filterInput.length; i++){
+            //     sum+= Number(filterInput[i])**filterInput.length;
+
+
+
+
+
+
+
+            // Number(filterInput[i])**filterInput.length
+            infoTxt.style.display = "block";
+
+
+            if (isSmith(intFilterInput)) {
+
+
+                return infoTxt.innerHTML =
+                    `Evet, <span>'${txtInput.value}'</span> sayısı Smith sayısıdır.`;
+
+
+
+            } else {
+                infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Smith sayısı değildir.`
+
+
+            }
+
+
+
+
+
+        });
+        txtInput.addEventListener("keypress", function (event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                infoTxt.style.display = "block";
+
+                if(filterInput){
+                if (isSmith(intFilterInput)) {
+
+
+                    return infoTxt.innerHTML =
+                        `Evet, <span>'${txtInput.value}'</span> sayısı Smith sayısıdır.`;
+
+
+
+                } else {
+                    infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Smith sayısı değildir.`
+
+
+                }
+            }
+            else if(filterInput == ""){
+                infoTxt.innerHTML = "";
+            }
+
+            }
+        });
+
+
+
+
+        txtInput.addEventListener("keyup", () => {
+            filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
+
+            intFilterInput = Number(filterInput);
+
+
+            reverseInput = filterInput.split("").reverse().join("");
+
+
+            if (filterInput) {
+                return checkBtn.classList.add("active");
+            }
+            infoTxt.style.display = "none";
+            checkBtn.classList.remove("active");
+        });
+
+
+        // function isPrime(intFilterInput) {
+        //     for (var i = 2; i < intFilterInput; i++)
+        //         if (intFilterInput % i === 0) return false;
+        //     return intFilterInput > 1;
+        // }
+        // function sumPrimeDivisors(num) {
+        //      primeTwoDigitSum =0;
+        //      sumOfPrimes = 0;
+        //     for (var i = 1; i <= num; i++) {
+        //         // if ((num % i == 0)) {
+        //             while (num % i == 0)
+        //                 num = num / i;
+        //             sumOfPrimes += i;
+        //         // } 
+        //         if(num % i != 0) {
+        //             sumOfPrimes += i;
+        //         }
+        //         if (i > 10) {
+        //             while (i) {
+        //                 primeTwoDigitSum += i % 10;
+        //                 i = Math.floor(i / 10);
+        //                 sumOfPrimes = sumOfPrimes + primeTwoDigitSum;
+        //             }
+
+        //         }
+
+        //     }
+        //     console.log(sumOfPrimes);
+        // }
+
+        // sumPrimeDivisors(6);
+        // sumPrimeDivisors(10);
+        // public static void main(String[] args) {
+
+        // }
+        function asalCarpanlarToplami(intFilterInput) {
+            var copyOfbolen;
+
+            if (intFilterInput == 2) {
+                return 2;
+            }
+            var primeNumberSum = 0;
+            if (intFilterInput == 10) {
+                primeNumberSum += 1;
+            }
+            var bolen = 2;
+            while (bolen <= intFilterInput) {
+                if ((intFilterInput % bolen == 0) && (bolen < 10)) {
+                    primeNumberSum += bolen;
+                    intFilterInput = intFilterInput / bolen;
+                } else if ((intFilterInput % bolen == 0) && (bolen > 10)) {
+                    copyOfbolen = bolen;
+                  
+                    console.log(copyOfbolen)
+                    while (copyOfbolen) {
+
+                        primeNumberSum += copyOfbolen % 10;
+                        copyOfbolen = Math.floor(copyOfbolen / 10);
+
+                    }
+
+
+                    intFilterInput = intFilterInput / bolen;
+                } else if (intFilterInput % bolen != 0) {
+                    bolen = nextPrime(bolen);
+                }
+            }
+            // return Math.floor(primeNumberSum);
+            return primeNumberSum;
+            //primeNumberSum + 1 çünkü 1 her zaman bir asal çarpandır.
+        }
+
+        function nextPrime(num) {
+            num++;
+            for (var i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    num++;
+                    i = 2;
+                } else {
+                    continue;
+                }
+            }
+            return num;
+        }
+
+        console.log(asalCarpanlarToplami(1086));
+
+
+        function isSmith(intFilterInput) {
+
+            var sumOfDigits = 0;
+
+            for (var i = 0; i < filterInput.length; i++) {
+                sumOfDigits += Number(filterInput[i])
+                // if(!(intFilterInput % i) && (isPrime(i))){
+                //     primeDividerSum += i;
+                // }
+            }
+            // for (var j = 2; j <= intFilterInput; j++) {
+            //     while ((intFilterInput % j == 0)) {
+            //        primeDividerSum =  intFilterInput / j;
+            //     }
+            // }
+            console.log(asalCarpanlarToplami(666));
+            console.log(sumOfDigits)
+
+             if (asalCarpanlarToplami(intFilterInput) == sumOfDigits) {
+                  return true;
+
+              }
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Üçgensel Sayı Kontrolü | Özel Sayılar Dünyası</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <a href="/">
+  <div class="back-main-page">
+    <p>Ana Sayfaya Dön</p>
+  </div>
+  </a>
+    <div class="wrapper">
+        <header>
+            <h1>Üçgensel Sayısı Kontrolü</h1>
+            <p>Bir üçgensel sayı, 1'den n'e kadar olan n doğal sayının toplamıdır.</p>
+        </header>
+        <div class="inputs">
+            <input type="number" min="0" spellcheck="false" placeholder="Lütfen sayıyı giriniz"
+                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+            <button>Kontrol Et</button>
+        </div>
+        <p class="info-txt"></p>
+    </div>
+    <script>
+        const txtInput = document.querySelector(".inputs input"),
+            checkBtn = document.querySelector(".inputs button"),
+            infoTxt = document.querySelector(".info-txt");
+
+
+
+        var filterInput;
+        var intFilterInput;
+
+        var n;
+
+
+
+
+
+
+
+        checkBtn.addEventListener("click", () => {
+
+
+            infoTxt.style.display = "block";
+
+
+
+            if (isTriangular(intFilterInput)) {
+
+
+                return infoTxt.innerHTML =
+                    `Evet, <span>'${txtInput.value}'</span> sayısı Üçgensel sayıdır.`;
+
+
+
+            } else {
+                infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Üçgensel sayı değildir.`
+
+
+            }
+
+
+
+
+
+        });
+        txtInput.addEventListener("keypress", function (event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                infoTxt.style.display = "block";
+
+            if(filterInput){
+                if (isTriangular(intFilterInput)) {
+
+
+                    return infoTxt.innerHTML =
+                        `Evet, <span>'${txtInput.value}'</span> sayısı Üçgensel sayıdır.`;
+
+
+
+                } else {
+                    infoTxt.innerHTML = `Hayır, <span>'${txtInput.value}'</span> sayısı Üçgensel sayı değildir.`
+
+
+                }
+            }
+            else if(filterInput == ""){
+                infoTxt.innerHTML = "";
+            }
+            }
+        });
+
+
+
+
+        txtInput.addEventListener("keyup", () => {
+            filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
+
+            intFilterInput = Number(filterInput);
+
+
+            reverseInput = filterInput.split("").reverse().join("");
+
+
+            if (filterInput) {
+                return checkBtn.classList.add("active");
+            }
+            infoTxt.style.display = "none";
+            checkBtn.classList.remove("active");
+        });
+
+
+
+
+        function isTriangular(intFilterInput) {
+
+
+            if (intFilterInput < 0)
+                return false;
+
+
+            let sum = 0;
+            for (let n = 1; sum <= intFilterInput; n++) {
+                sum = sum + n;
+                if (sum == intFilterInput)
+                    return true;
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
