@@ -128,7 +128,10 @@ header p{
 @media (max-width: 520px) {
   .wrapper{
     position:relative;
-    bottom:60px;
+    bottom:65px;
+  }
+  #armstrong-wrapper{
+    bottom:20px;
   }
   .wrapper{
     padding: 17px 20px 10px;
