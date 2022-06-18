@@ -96,7 +96,7 @@ header p{
   /* color:var(--mainGradient); */
 }
 .back-main-page{
-  position: absolute;
+  position: fixed;
   bottom: 40px;
   left: 40px;
   z-index: 99999;
@@ -149,6 +149,7 @@ header p{
   }
   .back-main-page{
     
+    bottom:-15px;
     left:20px;
     
   }
