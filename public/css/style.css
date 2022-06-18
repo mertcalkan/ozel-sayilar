@@ -128,7 +128,7 @@ header p{
 @media (max-width: 520px) {
   .wrapper{
     position:relative;
-    bottom:45px;
+    bottom:60px;
   }
   .wrapper{
     padding: 17px 20px 10px;
